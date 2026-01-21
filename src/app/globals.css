@@ -1,0 +1,290 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, * { 
+  scroll-behavior: smooth; 
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* CHANGE: Replaced gradient with single solid color and added min-height */
+  background-color: #0a0e27; 
+  min-height: 100vh;
+  
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* ... rest of your existing CSS below remains unchanged ... */
+  -webkit-transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -ms-transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, filter;
+}
+
+/* ... keep the rest of the file exactly as it was ... */
+img:hover {
+  scale: 1.08;
+  filter: brightness(1.15);
+  -webkit-transform: scale(1.08);
+  -moz-transform: scale(1.08);
+  -ms-transform: scale(1.08);
+  -o-transform: scale(1.08);
+}
+
+.anime-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background: linear-gradient(135deg, rgba(5, 217, 232, 0.05) 0%, rgba(28, 75, 161, 0.05) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(5, 217, 232, 0.15);
+  box-shadow: 0 4px 12px rgba(5, 217, 232, 0.05);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -ms-transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, box-shadow, border-color, background;
+}
+
+.anime-card:hover {
+  transform: translateY(-6px);
+  -webkit-transform: translateY(-6px);
+  -moz-transform: translateY(-6px);
+  -ms-transform: translateY(-6px);
+  -o-transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(5, 217, 232, 0.12);
+  border-color: rgba(5, 217, 232, 0.3);
+  background: linear-gradient(135deg, rgba(5, 217, 232, 0.1) 0%, rgba(28, 75, 161, 0.1) 100%);
+}
+
+.anime-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(5, 217, 232, 0.05) 100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  -webkit-transition: opacity 0.6s ease;
+  -moz-transition: opacity 0.6s ease;
+  -ms-transition: opacity 0.6s ease;
+  -o-transition: opacity 0.6s ease;
+}
+
+.anime-card:hover::before {
+  opacity: 1;
+}
+
+/* Enhanced Loading Animation */
+.loading {
+  width: 120px;
+  height: 120px;
+  position: relative;
+}
+
+.loading::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid rgba(5, 217, 232, 0.2);
+  border-radius: 50%;
+  border-top-color: #05d9e8;
+  border-right-color: #05d9e8;
+  animation: spinLoader 1.2s ease-in-out infinite;
+  -webkit-animation: spinLoader 1.2s ease-in-out infinite;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  top: 15%;
+  left: 15%;
+  border: 3px solid rgba(5, 217, 232, 0.1);
+  border-radius: 50%;
+  border-bottom-color: #05d9e8;
+  border-left-color: #05d9e8;
+  animation: spinLoader 1.8s ease-in-out infinite reverse;
+  -webkit-animation: spinLoader 1.8s ease-in-out infinite reverse;
+}
+
+@keyframes spinLoader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spinLoader {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+/* Skeleton Loading */
+.skeleton {
+  background: linear-gradient(90deg, rgba(5, 217, 232, 0.1) 0%, rgba(5, 217, 232, 0.2) 50%, rgba(5, 217, 232, 0.1) 100%);
+  background-size: 200% 100%;
+  animation: skeletonLoading 1.5s ease-in-out infinite;
+  -webkit-animation: skeletonLoading 1.5s ease-in-out infinite;
+}
+
+@keyframes skeletonLoading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@-webkit-keyframes skeletonLoading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Smooth Entrance Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    -webkit-transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+    -webkit-transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes slideInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 8px rgba(5, 217, 232, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 12px rgba(5, 217, 232, 0.5);
+  }
+}
+
+@-webkit-keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 8px rgba(5, 217, 232, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 12px rgba(5, 217, 232, 0.5);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  -webkit-animation: fadeInUp 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  -webkit-animation: slideInRight 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.glow-text {
+  animation: glow 3s ease-in-out infinite;
+  -webkit-animation: glow 3s ease-in-out infinite;
+}
+
+/* Loading Skeleton Cards */
+.skeleton-card {
+  @apply rounded-lg overflow-hidden;
+}
+
+.skeleton-card-image {
+  @apply w-full aspect-[3/4] rounded;
+}
+
+.skeleton-card-title {
+  @apply h-4 mt-3 rounded w-3/4;
+}
+
+/* Smooth transitions for all interactive elements */
+button, a, input {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -ms-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Disable animations for prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
